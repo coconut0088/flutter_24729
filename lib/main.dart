@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
-import 'bottom_navigator_bar.dart';
+import 'provider/album_provider.dart';
+import 'package:provider/provider.dart';
+import 'Ristview.dart';
+import '';
+
 
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AlbumProvider()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
