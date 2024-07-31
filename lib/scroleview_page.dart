@@ -10,8 +10,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>  {
-
+class _MyHomePageState extends State<MyHomePage> {
   final _url = 'https://jsonplaceholder.typicode.com/albums';
   int _page = 1;
   final int _limit = 20;
@@ -28,18 +27,17 @@ class _MyHomePageState extends State<MyHomePage>  {
     _controller = ScrollController()..addListener(_nextLoad);
   }
 
-
   void initLoad() async {
     setState(() {
       _isFirstLoadRunning = true;
     });
     try {
-      final res = await http.get(Uri.parse("$_url?_page=$_page&_limit=$_limit"));
+      final res =
+          await http.get(Uri.parse("$_url?_page=$_page&_limit=$_limit"));
       setState(() {
         _albumList = jsonDecode(res.body);
       });
-
-    } catch(e) {
+    } catch (e) {
       print(e.toString());
     }
 
@@ -50,32 +48,35 @@ class _MyHomePageState extends State<MyHomePage>  {
 
   void _nextLoad() async {
     print("nextLoad");
-    if(_hasNextPage && !_isFirstLoadRunning && !_isLoadMoreRunning
-        && _controller.position.extentAfter < 100) {
+    if (_hasNextPage &&
+        !_isFirstLoadRunning &&
+        !_isLoadMoreRunning &&
+        _controller.position.extentAfter < 100) {
       setState(() {
         _isLoadMoreRunning = true;
       });
       _page += 1;
       try {
-        final res = await http.get(Uri.parse("$_url?_page=$_page&_limit=$_limit"));
+        final res =
+            await http.get(Uri.parse("$_url?_page=$_page&_limit=$_limit"));
         final List fetchedAlbums = json.decode(res.body);
-        if(fetchedAlbums.isNotEmpty) {
+        if (fetchedAlbums.isNotEmpty) {
           setState(() {
             _albumList.addAll(fetchedAlbums);
           });
-        } else { // 데이터가 비어있는 경우
+        } else {
+          // 데이터가 비어있는 경우
           setState(() {
             _hasNextPage = false;
           });
         }
-      } catch(e) {
+      } catch (e) {
         print(e.toString());
       }
 
       setState(() {
         _isLoadMoreRunning = false;
       });
-
     }
   }
 
@@ -94,44 +95,37 @@ class _MyHomePageState extends State<MyHomePage>  {
         ),
         body: _isFirstLoadRunning
             ? const Center(
-          child: CircularProgressIndicator(),
-        )
-            : Column(
-          children: [
-            Expanded(
-                child: ListView.builder(
-                    controller: _controller,
-                    itemCount: _albumList.length,
-                    itemBuilder: (context, index) => Card(
-                      margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-                      child: ListTile(
-                        title: Text(_albumList[index]["id"].toString()),
-                        subtitle: Text(_albumList[index]["title"]),
-                      ),
-                    )
-                )
-            ),
-            if (_isLoadMoreRunning == true)
-              Container(
-                  padding: const EdgeInsets.all(30),
-                  child: const Center(
-                    child: CircularProgressIndicator(),
-                  )
-              ),
-            if (_hasNextPage == false)
-              Container(
-                  padding: const EdgeInsets.all(20),
-                  child: const Center(
-                    child: Text(
-                        "No more data to be fetched",
-                        style: TextStyle(
-                            color: Colors.white
-                        )
-                    ),
-                  )
+                child: CircularProgressIndicator(),
               )
-          ],
-        )
-    );
+            : Column(
+                children: [
+                  Expanded(
+                      child: ListView.builder(
+                          controller: _controller,
+                          itemCount: _albumList.length,
+                          itemBuilder: (context, index) => Card(
+                                margin: const EdgeInsets.symmetric(
+                                    vertical: 0, horizontal: 10),
+                                child: ListTile(
+                                  title:
+                                      Text(_albumList[index]["id"].toString()),
+                                  subtitle: Text(_albumList[index]["title"]),
+                                ),
+                              ))),
+                  if (_isLoadMoreRunning == true)
+                    Container(
+                        padding: const EdgeInsets.all(30),
+                        child: const Center(
+                          child: CircularProgressIndicator(),
+                        )),
+                  if (_hasNextPage == false)
+                    Container(
+                        padding: const EdgeInsets.all(20),
+                        child: const Center(
+                          child: Text("No more data to be fetched",
+                              style: TextStyle(color: Colors.white)),
+                        ))
+                ],
+              ));
   }
 }

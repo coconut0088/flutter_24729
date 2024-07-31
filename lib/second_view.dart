@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class SecondView extends StatefulWidget {
   const SecondView({super.key});
 
@@ -28,5 +27,3 @@ class _SecondViewState extends State<SecondView> {
     );
   }
 }
-
-

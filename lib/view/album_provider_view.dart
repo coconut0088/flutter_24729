@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/provider/album_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../model/album.dart';
-import '../provider/album_provider.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -12,11 +12,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   late List<Album> albumList;
 
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
   }
 
@@ -26,7 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
       create: ((context) => AlbumProvider()),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("test title"),
+          title: Text("provider"),
         ),
         body: Consumer<AlbumProvider>(
           builder: (context, provider, child) {
@@ -35,11 +35,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 itemCount: albumList.length,
                 itemBuilder: (context, index) {
                   return Container(
-                    padding: const EdgeInsets.all(10),
-                    child: Text("${albumList[index].id} : ${albumList[index].title}"),
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                        "${albumList[index].id} : ${albumList[index].title}"),
                   );
-                }
-            );
+                });
           },
         ),
       ),

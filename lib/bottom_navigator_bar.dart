@@ -7,22 +7,21 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin{
-
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   int _selectedIndex = 0;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
     _tabController.addListener(
-        () => setState(() => _selectedIndex = _tabController.index)
-    );
+        () => setState(() => _selectedIndex = _tabController.index));
   }
 
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
   }
 
@@ -34,8 +33,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       ),
       body: _selectedIndex == 0
           ? tabContainer(context, Colors.indigo, "Friends Tab")
-          : _selectedIndex == 1 ? tabContainer(context, Colors.yellow, "Chats Tab")
-          : tabContainer(context, Colors.blue, "Setting Tab"),
+          : _selectedIndex == 1
+              ? tabContainer(context, Colors.yellow, "Chats Tab")
+              : tabContainer(context, Colors.blue, "Setting Tab"),
       bottomNavigationBar: SizedBox(
         height: 90,
         child: TabBar(
@@ -44,20 +44,18 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           tabs: [
             Tab(
               icon: Icon(
-                  _selectedIndex == 0 ? Icons.person : Icons.person_2_outlined
-              ),
+                  _selectedIndex == 0 ? Icons.person : Icons.person_2_outlined),
               text: "Friends",
             ),
             Tab(
-              icon: Icon(
-                  _selectedIndex == 1 ? Icons.chat : Icons.chat_outlined
-              ),
+              icon:
+                  Icon(_selectedIndex == 1 ? Icons.chat : Icons.chat_outlined),
               text: "Chats",
             ),
             Tab(
-              icon: Icon(
-                  _selectedIndex == 2 ? Icons.settings : Icons.settings_outlined
-              ),
+              icon: Icon(_selectedIndex == 2
+                  ? Icons.settings
+                  : Icons.settings_outlined),
               text: "Settings",
             ),
           ],
@@ -65,7 +63,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       ),
     );
   }
-
 
   Widget tabContainer(BuildContext con, Color tabColor, String tabText) {
     return Container(
@@ -75,12 +72,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       child: Center(
         child: Text(
           tabText,
-          style: const TextStyle(
-              color: Colors.black
-          ),
+          style: const TextStyle(color: Colors.black),
         ),
       ),
     );
   }
-
 }

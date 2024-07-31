@@ -4,8 +4,6 @@ import 'package:provider/provider.dart';
 import 'Ristview.dart';
 import '';
 
-
-
 void main() {
   runApp(
     MultiProvider(

@@ -18,10 +18,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: GestureDetector(
           onTap: () => Navigator.push(
-              context, MaterialPageRoute(
-                    builder: (_) => SecondView()
-                )
-          ),
+              context, MaterialPageRoute(builder: (_) => SecondView())),
           child: Container(
             padding: EdgeInsets.all(15),
             color: Colors.blue,

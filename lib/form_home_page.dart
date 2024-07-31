@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
@@ -9,11 +8,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   final _key = GlobalKey<FormState>();
   late String _username, _email;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +35,11 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-
   Widget usernameInput() {
     return TextFormField(
       autofocus: true,
       validator: (val) {
-        if(val == null || val.isEmpty) {
+        if (val == null || val.isEmpty) {
           return 'The input is empty';
         } else {
           return null;
@@ -63,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return TextFormField(
       autofocus: true,
       validator: (val) {
-        if(val == null || val.isEmpty) {
+        if (val == null || val.isEmpty) {
           return 'The input is empty';
         } else {
           return null;
@@ -92,11 +87,8 @@ class _MyHomePageState extends State<MyHomePage> {
             );
           }
         },
-
         child: Container(
           child: Text("Submit"),
-        )
-    );
+        ));
   }
-
 }

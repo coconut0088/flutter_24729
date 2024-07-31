@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SuccessPage extends StatelessWidget {
-
   Widget build(BuildContext context) {
-
-    final Map<String, String> args = ModalRoute.of(context)!.settings.arguments
-    as Map<String, String>;
-
-
+    final Map<String, String> args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, String>;
 
     return Scaffold(
       appBar: AppBar(

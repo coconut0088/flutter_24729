@@ -19,22 +19,26 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             Center(
               child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.yellow
-                ),
-                onPressed: () {print("ElevatedButton click");},
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
+                onPressed: () {
+                  print("ElevatedButton click");
+                },
                 child: Text("ElevatedButton 버튼"),
               ),
             ),
             Center(
               child: TextButton(
-                onPressed: () {print("TextButton click");},
+                onPressed: () {
+                  print("TextButton click");
+                },
                 child: Text("TextButton 버튼"),
               ),
             ),
             Center(
               child: OutlinedButton(
-                onPressed: (){print("outlinedButton click");},
+                onPressed: () {
+                  print("outlinedButton click");
+                },
                 child: Text("OutlinedButton 버튼"),
               ),
             )

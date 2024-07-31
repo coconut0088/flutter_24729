@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
@@ -9,36 +8,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   final postList = [
-    {
-      "title" : "Sample title 1" ,
-      "color" : Colors.blue
-    },
-    {
-      "title" : "Sample title 2" ,
-      "color" : Colors.greenAccent
-    },
-    {
-      "title" : "Sample title 3" ,
-      "color" : Colors.lime
-    },
-    {
-      "title" : "Sample title 4" ,
-      "color" : Colors.blue
-    },
-    {
-      "title" : "Sample title 5" ,
-      "color" : Colors.green
-    },
-    {
-      "title" : "Sample title 6" ,
-      "color" : Colors.yellow
-    },
-    {
-      "title" : "Sample title 7" ,
-      "color" : Colors.red
-    },
+    {"title": "Sample title 1", "color": Colors.blue},
+    {"title": "Sample title 2", "color": Colors.greenAccent},
+    {"title": "Sample title 3", "color": Colors.lime},
+    {"title": "Sample title 4", "color": Colors.blue},
+    {"title": "Sample title 5", "color": Colors.green},
+    {"title": "Sample title 6", "color": Colors.yellow},
+    {"title": "Sample title 7", "color": Colors.red},
   ];
 
   @override
@@ -49,16 +26,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: ListView.builder(
             itemCount: postList.length,
-            itemBuilder: (BuildContext con, int index)  {
+            itemBuilder: (BuildContext con, int index) {
               return postContainer(
                   title: postList[index]["title"] as String,
-                  colorData: postList[index]["color"] as Color
-              );
-            }
-        )
-    );
+                  colorData: postList[index]["color"] as Color);
+            }));
   }
-
 
   Widget postContainer({String title = '', Color colorData = Colors.red}) {
     return Column(
@@ -68,13 +41,9 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: const EdgeInsets.all(10),
           child: Text(
             title,
-            style: const TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold
-            ),
+            style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
           ),
         ),
-
         Container(
           width: MediaQuery.of(context).size.width,
           height: 100,
