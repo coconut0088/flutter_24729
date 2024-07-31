@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class NavigatorBar extends StatefulWidget {
+  const NavigatorBar({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<NavigatorBar> createState() => _NavigatorBarState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
+class _NavigatorBarState extends State<NavigatorBar>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   int _selectedIndex = 0;
