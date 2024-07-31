@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Ristview.dart';
+import 'bottom_navigator_bar.dart';
 
 
 void main() {
